@@ -30,7 +30,7 @@ import java.nio.ByteOrder;
 
 public class PredictRuins extends AppCompatActivity {
 
-    Button camera, gallery;
+    Button camera, gallery, view3D;
     ImageView imageView;
     TextView result;
     int imageSize = 32;
@@ -42,6 +42,7 @@ public class PredictRuins extends AppCompatActivity {
 
         camera = findViewById(R.id.button);
         gallery = findViewById(R.id.button2);
+        view3D = findViewById(R.id.button3);
 
         result = findViewById(R.id.result);
         imageView = findViewById(R.id.imageView);
@@ -63,6 +64,14 @@ public class PredictRuins extends AppCompatActivity {
             public void onClick(View view) {
                 Intent cameraIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(cameraIntent, 1);
+            }
+        });
+
+        view3D.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PredictRuins.this, RuinsModelsActivity.class);
+                startActivity(intent);
             }
         });
     }

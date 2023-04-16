@@ -1,10 +1,8 @@
 package com.example.image_detector;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.Intent;
@@ -15,7 +13,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,18 +20,15 @@ import android.widget.TextView;
 import com.example.image_detector.ml.StatuePredictionModel;
 
 import org.tensorflow.lite.DataType;
-import org.tensorflow.lite.support.image.TensorImage;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button camera, gallery;
+    Button camera, gallery, view3D;
     ImageView imageView;
     TextView result;
     int imageSize = 32;
@@ -46,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         camera = findViewById(R.id.button);
         gallery = findViewById(R.id.button2);
+        view3D = findViewById(R.id.button3);
 
         result = findViewById(R.id.result);
         imageView = findViewById(R.id.imageView);
@@ -67,6 +62,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent cameraIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(cameraIntent, 1);
+            }
+        });
+
+        view3D.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, StatueModelsActivity.class);
+                startActivity(intent);
             }
         });
     }

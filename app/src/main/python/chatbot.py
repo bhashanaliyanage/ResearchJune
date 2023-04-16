@@ -1,4 +1,6 @@
 import nltk
+nltk.download('vader_lexicon')
+from nltk.sentiment import SentimentIntensityAnalyzer
 from nltk.chat.util import Chat, reflections
 
 
@@ -6,54 +8,92 @@ def main(inputData):
     # Creating Pairs
     pairs = [
         [
-            r"my name is (.*)",
-            ["Hello %1, How are you doing today ?", ]
-        ],
-        [
             r"hi|hey|hello",
-            ["Hello", "Hey there", ]
+            ["Hello, welcome to our travel chatbot! How can I assist you today?", ]
         ],
         [
-            r"what is your name?|Who are you?",
-            ["You can call me 'Ancient One'", ]
+            r"what can you do|what services do you offer|what do you offer",
+            ["I can help you with travel recommendations, booking flights, finding hotels, and planning itineraries.", ]
         ],
         [
-            r"how are you ?",
-            ["I am fine, thank you! How can i help you?", ]
+            r"i want to go to (.*)",
+            ["Sure, we can help with that. Which city or country would you like to visit in %1?", ]
         ],
         [
-            r"I am fine, thank you",
-            ["great to hear that, how can i help you?", ]
+            r"(.*) in (.*)",
+            ["Yes, we can recommend some popular %1 in %2. What's your budget like?", ]
         ],
         [
-            r"how can i help you? ",
-            ["i am looking for online guides and courses to learn data science, can you suggest?",
-             "i am looking for data science training platforms", ]
+            r"my budget is (\d+)",
+            ["Great, we have some options that fit within your budget. Would you like us to send you some recommendations?", ]
         ],
         [
-            r"i'm doing good",
-            ["That's great to hear", "How can i help you?:)", ]
+            r"yes|sure|ok|send it",
+            ["We'll send you an email with some recommendations shortly. Is there anything else you need help with?", ]
         ],
         [
-            r"i am looking for online guides and courses to learn data science, can you suggest?",
-            ["Pluralsight is a great option to learn data science. You can check their website", ]
+            r"no|not right now|thanks",
+            ["Alright, feel free to reach out to us if you need any further assistance. Have a great day!", ]
         ],
         [
-            r"thanks for the suggestion. do they have great authors and instructors?",
-            ["Yes, they have the world class best authors, that is their strength;)", ]
+            r"thank you|thanks",
+            ["You're welcome! It was my pleasure to assist you.", ]
         ],
         [
-            r"(.*) thank you so much, that was helpful",
-            ["Iam happy to help", "No problem, you're welcome", ]
+            r"bye|goodbye",
+            ["Goodbye! Have a safe and enjoyable trip!", ]
         ],
         [
-            r"quit|bye",
-            ["Bye, take care. See you soon :) ", "It was nice talking to you. See you soon :)"]
+            r"(.*)",
+            ["I'm sorry, I didn't understand that. Could you please rephrase or provide more information?", ]
         ],
     ]
 
-    chat = Chat(pairs, reflections)
+    # Creating reflections
+    my_reflections = {
+        "i am": "you are",
+        "i was": "you were",
+        "i": "you",
+        "i'm": "you are",
+        "i'd": "you would",
+        "i've": "you have",
+        "i'll": "you will",
+        "my": "your",
+        "you are": "I am",
+        "you were": "I was",
+        "you've": "I have",
+        "you'll": "I will",
+        "your": "my",
+        "yours": "mine",
+        "you": "me",
+        "me": "you"
+    }
 
-    outputData = chat.respond(inputData)
+    # Creating sentiment analyzer
+    sia = SentimentIntensityAnalyzer()
 
-    return "" + str(outputData)
+    # Defining function to get sentiment score
+    def get_sentiment(input_str):
+        return sia.polarity_scores(input_str)["compound"]
+
+    # Creating chatbot
+    chatbot = Chat(pairs, my_reflections)
+
+    # Getting response from chatbot
+    response = chatbot.respond(inputData)
+
+    # Getting sentiment score for response
+    sentiment_score = get_sentiment(response)
+
+    # Classifying sentiment
+    if sentiment_score >= 0.5:
+        sentiment = "positive"
+    elif sentiment_score <= -0.5:
+        sentiment = "negative"
+    else:
+        sentiment = "neutral"
+
+    # Adding sentiment information to response
+    response += "\nSentiment: " + sentiment
+
+    return response

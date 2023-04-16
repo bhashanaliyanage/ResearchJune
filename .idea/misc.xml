@@ -10,10 +10,21 @@
         <entry key="..\:/Projects/Working/Image_Detector/app/src/main/res/layout/activity_main_menu.xml" value="0.1956521739130435" />
         <entry key="..\:/Projects/Working/Image_Detector/app/src/main/res/layout/activity_predict_ruins.xml" value="0.1956521739130435" />
         <entry key="..\:/Projects/Working/Image_Detector/app/src/main/res/layout/activity_predict_stupa.xml" value="0.1956521739130435" />
+        <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/layout/activity_chat_bot.xml" value="0.13272543059777103" />
+        <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/layout/activity_main_menu.xml" value="0.13272543059777103" />
+        <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/layout/activity_models.xml" value="0.22" />
+        <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/layout/activity_predict_ruins.xml" value="0.25" />
+        <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/layout/activity_predict_stupa.xml" value="0.25" />
+        <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/layout/activity_ruins_models.xml" value="0.27291666666666664" />
+        <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/layout/activity_statue1.xml" value="0.25885416666666666" />
+        <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/layout/activity_statue2.xml" value="0.27291666666666664" />
+        <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/layout/activity_stupa_models.xml" value="0.27291666666666664" />
+        <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/layout/list_item.xml" value="0.271875" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="19" project-jdk-type="JavaSDK" />
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
