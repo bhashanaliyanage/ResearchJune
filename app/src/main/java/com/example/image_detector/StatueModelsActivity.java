@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.badge.BadgeUtils;
 
@@ -19,7 +20,7 @@ public class StatueModelsActivity extends AppCompatActivity {
     Button statue02;
     TextView text;
 
-    String[] names = {"Bandaranaike Statue", "King Devanampiyatissa", "Moonstone"};
+    String[] names = {"Nuwaraeliya Buddha Statue", "Statue of Shiva", "Athugala Buddha Statue"};
 
     AutoCompleteTextView autoCompleteTextView;
 
@@ -51,16 +52,23 @@ public class StatueModelsActivity extends AppCompatActivity {
 
         statue02.setOnClickListener(view -> {
             String sName = text.getText().toString();
-            if (sName == "Moonstone") {
+            if (sName == "Nuwaraeliya Buddha Statue") {
                 Intent sceneViewerIntent = new Intent(Intent.ACTION_VIEW);
-                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/ashmhmd25321/3D_Models/blob/main/Sandakada%2BPahana.glb?raw=true"));
+                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/bhashanaliyanage/ResearchJune/blob/main/nuwaraeliyaBuddhastatue.glb?raw=true"));
                 sceneViewerIntent.setPackage("com.google.android.googlequicksearchbox");
                 startActivity(sceneViewerIntent);
-            } else if(sName == "King Devanampiyatissa") {
+            } else if(sName == "Statue of Shiva") {
                 Intent sceneViewerIntent = new Intent(Intent.ACTION_VIEW);
-                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/ashmhmd25321/3D_Models/blob/main/ImageToStl.com_rathnapasada%20(2).glb?raw=true"));
+                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/bhashanaliyanage/ResearchJune/blob/main/shiva.glb?raw=true"));
                 sceneViewerIntent.setPackage("com.google.android.googlequicksearchbox");
                 startActivity(sceneViewerIntent);
+            } else if (sName == "Athugala Buddha Statue") {
+                Intent sceneViewerIntent = new Intent(Intent.ACTION_VIEW);
+                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/bhashanaliyanage/ResearchJune/blob/main/Lord%20Buddha.glb?raw=true"));
+                sceneViewerIntent.setPackage("com.google.android.googlequicksearchbox");
+                startActivity(sceneViewerIntent);
+            }else {
+                Toast.makeText(this,"Select a 3D model", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -11,13 +11,14 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class StupaModelsActivity extends AppCompatActivity {
 
     Button statue02;
     TextView text;
 
-    String[] names = {"Jethawanaramaya", "Rankothwehera", "Moonstone"};
+    String[] names = {"Jethawanaramaya", "Rankothwehera", "Mirisawatiya"};
 
     AutoCompleteTextView autoCompleteTextView;
 
@@ -49,16 +50,23 @@ public class StupaModelsActivity extends AppCompatActivity {
 
         statue02.setOnClickListener(view -> {
             String sName = text.getText().toString();
-            if (sName == "Moonstone") {
+            if (sName == "Rankothwehera") {
                 Intent sceneViewerIntent = new Intent(Intent.ACTION_VIEW);
-                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/ashmhmd25321/3D_Models/blob/main/Sandakada%2BPahana.glb?raw=true"));
+                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/bhashanaliyanage/ResearchJune/blob/main/rankoth.glb?raw=true"));
                 sceneViewerIntent.setPackage("com.google.android.googlequicksearchbox");
                 startActivity(sceneViewerIntent);
-            } else if(sName == "King Devanampiyatissa") {
+            } else if(sName == "Mirisawatiya") {
                 Intent sceneViewerIntent = new Intent(Intent.ACTION_VIEW);
-                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/ashmhmd25321/3D_Models/blob/main/ImageToStl.com_rathnapasada%20(2).glb?raw=true"));
+                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/bhashanaliyanage/ResearchJune/blob/main/miris.glb?raw=true"));
                 sceneViewerIntent.setPackage("com.google.android.googlequicksearchbox");
                 startActivity(sceneViewerIntent);
+            } else if (sName == "Jethawanaramaya") {
+                Intent sceneViewerIntent = new Intent(Intent.ACTION_VIEW);
+                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/bhashanaliyanage/ResearchJune/blob/main/jethawanaramaya.glb?raw=true"));
+                sceneViewerIntent.setPackage("com.google.android.googlequicksearchbox");
+                startActivity(sceneViewerIntent);
+            }else {
+                Toast.makeText(this,"Select a 3D model", Toast.LENGTH_SHORT).show();
             }
         });
     }

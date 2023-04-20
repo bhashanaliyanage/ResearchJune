@@ -4,33 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/c9ecc49073d6eaeb5f9ea544f283ec84"
+    android:backgroundTint="#B0FFFFFF"
+    android:backgroundTintMode="src_over"
     tools:context=".MainActivity">
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/button2"
         android:layout_centerVertical="true"
-        android:layout_marginBottom="9dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/custom_button_white_background_shape"
         android:text="Take Picture"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="21sp"
         android:textStyle="bold" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerVertical="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="73dp"
+        android:background="@drawable/custom_button_white_background_shape"
         android:text="Launch Gallery"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="21sp"
         android:textStyle="bold" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,16 +50,21 @@
         android:layout_marginBottom="16dp"
         android:text="View 3D Models"
         android:textAllCaps="false"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/custom_button_white_background_shape"
+        android:textColor="@color/white"
         android:textSize="21sp"
         android:textStyle="bold"/>
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="370sp"
         android:layout_height="370sp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/imageView"
-        android:layout_marginTop="10sp"
-        />
+        android:layout_marginTop="10dp"
+        android:src="@drawable/img" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,13 +1,16 @@
 package com.example.image_detector;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -37,11 +40,14 @@ public class ChatBot extends AppCompatActivity {
         }
 
         MessagesWindow messagesWindow = (MessagesWindow) findViewById(R.id.customized_messages_window);
+        Button send = findViewById(com.samsao.messageui.R.id.message_box_button);
+        send.setBackgroundColor(Color.WHITE);
+        send.setTextSize(14);
+        send.setTextColor(Color.BLUE);
         EditText message = messagesWindow.getWritingMessageView().findViewById(com.samsao.messageui.R.id.message_box_text_field);
-
+        message.setBackgroundColor(Color.WHITE);
         message.setHint("Type Here...");
-        messagesWindow.setBackgroundResource(com.google.android.material.R.color.design_default_color_primary_dark);
-
+        messagesWindow.setBackgroundResource(com.google.android.material.R.color.material_grey_850);
         messagesWindow.getWritingMessageView().findViewById(com.samsao.messageui.R.id.message_box_button).setOnClickListener(v -> {
             messagesWindow.sendMessage(message.getText().toString());
 

@@ -117,12 +117,11 @@ public class PredictStupa extends AppCompatActivity {
                 }
             }
 
-            String[] classes = {"abayagiriya", "jethawanaramaya", "kelaniya", "lankaramaya", "mirisawatiya", "ridi viharaya", "ruwanwalisaya", "somawathiya", "thuparamaya"};
+            String[] classes = {"abayagiriya", "jethawanaramaya", "kelaniya", "lankaramaya", "mirisawatiya", "ridi viharaya", "ruwanwalisaya","sadahirusaya", "somawathiya", "thuparamaya"};
             result.setText(classes[maxPos]);
             // Releases model resources if no longer used.
             model.close();
         } catch (IOException e) {
-            // TODO Handle the exception
         }
     }
 

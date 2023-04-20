@@ -10,9 +10,12 @@
         <entry key="..\:/Projects/Working/Image_Detector/app/src/main/res/layout/activity_main_menu.xml" value="0.1956521739130435" />
         <entry key="..\:/Projects/Working/Image_Detector/app/src/main/res/layout/activity_predict_ruins.xml" value="0.1956521739130435" />
         <entry key="..\:/Projects/Working/Image_Detector/app/src/main/res/layout/activity_predict_stupa.xml" value="0.1956521739130435" />
-        <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/layout/activity_chat_bot.xml" value="0.13272543059777103" />
-        <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/layout/activity_main_menu.xml" value="0.13272543059777103" />
+        <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/drawable-v24/custom_button_white_background_shape.xml" value="0.1785" />
+        <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/drawable/my_balloon_shape.xml" value="0.101" />
+        <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/drawable/other_balloon_shape.xml" value="0.101" />
+        <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/layout/activity_chat_bot.xml" value="0.2" />
+        <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/layout/activity_main_menu.xml" value="0.2" />
         <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/layout/activity_models.xml" value="0.22" />
         <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/layout/activity_predict_ruins.xml" value="0.25" />
         <entry key="..\:/Projects/Working/Ruins App/ancient_ruins_detector/app/src/main/res/layout/activity_predict_stupa.xml" value="0.25" />

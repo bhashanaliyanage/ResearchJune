@@ -14,10 +14,10 @@ import android.widget.TextView;
 
 public class RuinsModelsActivity extends AppCompatActivity {
 
-    Button statue02;
+    androidx.appcompat.widget.AppCompatButton statue02;
     TextView text;
 
-    String[] names = {"Bandaranaike Statue", "King Devanampiyatissa", "Moonstone"};
+    String[] names = {"Kaparamula", "Rathnapasada", "Moonstone in Anuradhapura", "Satmahal Prasadaya"};
 
     AutoCompleteTextView autoCompleteTextView;
 
@@ -49,14 +49,22 @@ public class RuinsModelsActivity extends AppCompatActivity {
 
         statue02.setOnClickListener(view -> {
             String sName = text.getText().toString();
-            if (sName == "Moonstone") {
+            if (sName == "Moonstone in Anuradhapura") {
                 Intent sceneViewerIntent = new Intent(Intent.ACTION_VIEW);
-                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/ashmhmd25321/3D_Models/blob/main/Sandakada%2BPahana.glb?raw=true"));
+                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/bhashanaliyanage/ResearchJune/blob/main/Sandakada%2BPahana.glb?raw=true"));
                 sceneViewerIntent.setPackage("com.google.android.googlequicksearchbox");
                 startActivity(sceneViewerIntent);
-            } else if(sName == "King Devanampiyatissa") {
+            } else if(sName == "Rathnapasada") {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://p3d.in/R3fBn/embed")); // replace the URL with the link to your Sketchfab model
+                intent.setPackage("com.android.chrome"); // set the package of the web browser you want to use
+                startActivity(intent);
+            }else if(sName == "Kaparamula") {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://p3d.in/2qjnO/embed")); // replace the URL with the link to your Sketchfab model
+                intent.setPackage("com.android.chrome"); // set the package of the web browser you want to use
+                startActivity(intent);
+            }else if (sName == "Satmahal Prasadaya") {
                 Intent sceneViewerIntent = new Intent(Intent.ACTION_VIEW);
-                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/ashmhmd25321/3D_Models/blob/main/ImageToStl.com_rathnapasada%20(2).glb?raw=true"));
+                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/bhashanaliyanage/ResearchJune/blob/main/Stamahal%2BPrasadaya.glb?raw=true"));
                 sceneViewerIntent.setPackage("com.google.android.googlequicksearchbox");
                 startActivity(sceneViewerIntent);
             }

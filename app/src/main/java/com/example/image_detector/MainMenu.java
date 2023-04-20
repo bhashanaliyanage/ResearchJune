@@ -5,10 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 public class MainMenu extends AppCompatActivity {
 
-    Button pStatues, pRuins, pTemples, chatBot;
+    LinearLayout pStatues,pRuins, pTemples, chatBot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,8 +17,8 @@ public class MainMenu extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
 
         pStatues = findViewById(R.id.predict_statues);
-        pRuins = findViewById(R.id.predict_temple);
-        pTemples = findViewById(R.id.predict_ruins);
+        pRuins = findViewById(R.id.predict_ruins);
+        pTemples = findViewById(R.id.predict_temple);
         chatBot = findViewById(R.id.chatbot);
 
         pStatues.setOnClickListener(v -> {

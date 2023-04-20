@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/c9ecc49073d6eaeb5f9ea544f283ec84"
+    android:backgroundTint="#DAFFFFFF"
+    android:backgroundTintMode="src_over"
     tools:context=".StatueModelsActivity">
 
     <TextView
@@ -11,18 +14,22 @@
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="122dp"
+        android:layout_marginTop="12dp"
         android:layout_marginBottom="72dp"
+        android:text="Statue 3D Models"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="18sp" />
+        android:textSize="28sp" />
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="@string/select"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:hint="@string/select">
 
         <AutoCompleteTextView
             android:id="@+id/auto_complete_txt"
@@ -31,17 +38,20 @@
             android:inputType="none" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/statue2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="191dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="47dp"
+        android:background="@drawable/custom_button_white_background_shape"
         android:text="View Statue in 3D"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </RelativeLayout>
