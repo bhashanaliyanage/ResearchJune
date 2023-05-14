@@ -67,11 +67,22 @@ public class PredictRuins extends AppCompatActivity {
             }
         });
 
-        view3D.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PredictRuins.this, RuinsModelsActivity.class);
+        view3D.setOnClickListener(v -> {
+            String sName = result.getText().toString();
+            if (sName == "palace complex of king nissanka") {
+                Intent sceneViewerIntent = new Intent(Intent.ACTION_VIEW);
+                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/ashmhmd25321/3D_Models/blob/main/model_build.glb?raw=true"));
+                sceneViewerIntent.setPackage("com.google.android.googlequicksearchbox");
+                startActivity(sceneViewerIntent);
+            } else if(sName == "Rathnapasada") {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://p3d.in/R3fBn/embed")); // replace the URL with the link to your Sketchfab model
+                intent.setPackage("com.android.chrome"); // set the package of the web browser you want to use
                 startActivity(intent);
+            }else if (sName == "Satmahal Prasadaya") {
+                Intent sceneViewerIntent = new Intent(Intent.ACTION_VIEW);
+                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/bhashanaliyanage/ResearchJune/blob/main/Stamahal%2BPrasadaya.glb?raw=true"));
+                sceneViewerIntent.setPackage("com.google.android.googlequicksearchbox");
+                startActivity(sceneViewerIntent);
             }
         });
     }
@@ -117,7 +128,7 @@ public class PredictRuins extends AppCompatActivity {
                 }
             }
 
-            String[] classes = {"Thiriyaya Girihandu Seya", "abayagiriya", "janthagara", "jethawanaya", "kuttam pokuna", "lowamahapaya", "palace complex of king nissanka", "ritigala","sigiriya"};
+            String[] classes = {"Thiriyaya Girihandu Seya", "abayagiriya", "janthagara", "jethawanaya", "kuttam pokuna", "lowamahapaya", "palace complex of king nissanka", "ritigala", "sigiriya"};
             result.setText(classes[maxPos]);
             // Releases model resources if no longer used.
             model.close();

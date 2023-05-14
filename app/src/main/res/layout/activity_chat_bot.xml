@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,26 +7,43 @@
     tools:context=".ChatBot"
     android:orientation="horizontal">
 
-    <com.samsao.messageui.views.MessagesWindow
-        android:id="@+id/customized_messages_window"
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:balloonMargins="20dp"
-        app:thatBalloonBackground="@drawable/other_balloon_shape"
-        app:thatBalloonTextColor="@android:color/white"
-        app:thisBalloonBackground="@drawable/my_balloon_shape"
-        app:thisBalloonTextColor="@android:color/white">
+        android:id="@+id/recycler_view"
+        android:layout_above="@id/bottom_layout"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottom_layout">
+
+        <EditText
+            android:id="@+id/message_edit_text"
+            android:layout_width="291dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="72dp"
+            android:layout_toLeftOf="@id/send_btn"
+            android:background="@drawable/rounded_corner"
+            android:hint="Write here "
+            android:padding="16dp" />
 
         <ImageButton
-            android:id="@+id/btnSpeak"
-            android:layout_width="57dp"
-            android:layout_height="53dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:id="@+id/send_btn"
+            android:contentDescription="Send Button"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="84dp"
-            android:background="@drawable/speak" />
+            android:layout_centerInParent="true"
+            android:layout_marginStart="10dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_baseline_send_24"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            />
 
-    </com.samsao.messageui.views.MessagesWindow>
+    </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>

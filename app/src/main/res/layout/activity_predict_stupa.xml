@@ -9,19 +9,20 @@
     android:backgroundTintMode="src_over"
     tools:context=".PredictStupa">
 
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/button2"
         android:layout_centerVertical="true"
-        android:layout_marginBottom="6dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="9dp"
         android:background="@drawable/custom_button_white_background_shape"
-        android:textColor="@color/white"
         android:text="Take Picture"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="21sp"
         android:textStyle="bold" />
 
@@ -31,13 +32,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerVertical="true"
-        android:layout_marginBottom="81dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="75dp"
         android:background="@drawable/custom_button_white_background_shape"
-        android:textColor="@color/white"
         android:text="Launch Gallery"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="21sp"
         android:textStyle="bold" />
 
@@ -47,24 +48,40 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerVertical="true"
-        android:layout_marginBottom="26dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="19dp"
         android:background="@drawable/custom_button_white_background_shape"
-        android:textColor="@color/white"
         android:text="View 3D Models"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="21sp"
         android:textStyle="bold" />
 
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/detailBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="188dp"
+        android:background="@drawable/custom_button_white_background_shape"
+        android:text="View Details"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="21sp"
+        android:textStyle="bold"/>
+
     <ImageView
-        android:layout_width="370sp"
-        android:layout_height="370sp"
-        android:layout_centerHorizontal="true"
         android:id="@+id/imageView"
-        android:src="@drawable/img"
+        android:layout_width="303dp"
+        android:layout_height="303dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10sp"
-        />
+        android:src="@drawable/img" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

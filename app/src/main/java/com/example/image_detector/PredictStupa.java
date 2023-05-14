@@ -8,6 +8,8 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Build;
@@ -17,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.image_detector.ml.Model;
 import com.example.image_detector.ml.SthupaModel;
@@ -30,7 +33,7 @@ import java.nio.ByteOrder;
 
 public class PredictStupa extends AppCompatActivity {
 
-    Button camera, gallery, view3D;
+    Button camera, gallery, view3D, viewDetails;
     ImageView imageView;
     TextView result;
     int imageSize = 32;
@@ -43,6 +46,8 @@ public class PredictStupa extends AppCompatActivity {
         camera = findViewById(R.id.button);
         gallery = findViewById(R.id.button2);
         view3D = findViewById(R.id.button3);
+        viewDetails = findViewById(R.id.detailBtn);
+        viewDetails.setVisibility(View.GONE);
 
         result = findViewById(R.id.result);
         imageView = findViewById(R.id.imageView);
@@ -67,13 +72,39 @@ public class PredictStupa extends AppCompatActivity {
             }
         });
 
-        view3D.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PredictStupa.this, StupaModelsActivity.class);
-                startActivity(intent);
+        view3D.setOnClickListener(v -> {
+            String sName = result.getText().toString();
+            if (sName == "Rankothwehera") {
+                Intent sceneViewerIntent = new Intent(Intent.ACTION_VIEW);
+                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/bhashanaliyanage/ResearchJune/blob/main/rankoth.glb?raw=true"));
+                sceneViewerIntent.setPackage("com.google.android.googlequicksearchbox");
+                startActivity(sceneViewerIntent);
+            } else if(sName == "mirisawatiya") {
+                Intent sceneViewerIntent = new Intent(Intent.ACTION_VIEW);
+                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/bhashanaliyanage/ResearchJune/blob/main/miris.glb?raw=true"));
+                sceneViewerIntent.setPackage("com.google.android.googlequicksearchbox");
+                startActivity(sceneViewerIntent);
+            } else if (sName == "jethawanaramaya") {
+                Intent sceneViewerIntent = new Intent(Intent.ACTION_VIEW);
+                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/bhashanaliyanage/ResearchJune/blob/main/jethawanaramaya.glb?raw=true"));
+                sceneViewerIntent.setPackage("com.google.android.googlequicksearchbox");
+                startActivity(sceneViewerIntent);
+            }else {
+                Toast.makeText(this,"There are no 3D model for the selected.", Toast.LENGTH_SHORT).show();
             }
         });
+
+        viewDetails.setOnClickListener(v -> {
+            String res = result.getText().toString();
+            Drawable drawable = imageView.getDrawable();
+            Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+
+            Intent intent = new Intent(this, ViewDetailsActivity.class);
+            intent.putExtra("key", res);
+            intent.putExtra("image", bitmap);
+            startActivity(intent);
+        });
+
     }
 
     public void classifyImage(Bitmap image){
@@ -121,6 +152,14 @@ public class PredictStupa extends AppCompatActivity {
             result.setText(classes[maxPos]);
             // Releases model resources if no longer used.
             model.close();
+
+            String res = result.getText().toString();
+
+            if (res.equals("")) {
+                viewDetails.setVisibility(View.GONE);
+            }else {
+                viewDetails.setVisibility(View.VISIBLE);
+            }
         } catch (IOException e) {
         }
     }
