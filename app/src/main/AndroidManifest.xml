@@ -25,9 +25,6 @@
             android:name=".ViewDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".RuinsModelsActivity"
-            android:exported="false" />
-        <activity
             android:name=".StatueModelsActivity"
             android:exported="false" />
         <activity

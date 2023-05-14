@@ -27,6 +27,9 @@ import com.example.image_detector.ml.SthupaModel;
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -74,7 +77,7 @@ public class PredictStupa extends AppCompatActivity {
 
         view3D.setOnClickListener(v -> {
             String sName = result.getText().toString();
-            if (sName == "Rankothwehera") {
+            if (sName == "rankothwehera") {
                 Intent sceneViewerIntent = new Intent(Intent.ACTION_VIEW);
                 sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/bhashanaliyanage/ResearchJune/blob/main/rankoth.glb?raw=true"));
                 sceneViewerIntent.setPackage("com.google.android.googlequicksearchbox");
@@ -99,12 +102,34 @@ public class PredictStupa extends AppCompatActivity {
             Drawable drawable = imageView.getDrawable();
             Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
 
+            // Save the high-quality image to a file or cache directory
+            File imageFile = saveHighQualityImageToFile(bitmap);
+
             Intent intent = new Intent(this, ViewDetailsActivity.class);
             intent.putExtra("key", res);
-            intent.putExtra("image", bitmap);
+            intent.putExtra("image", imageFile.getAbsolutePath()); // Pass the byte array instead of the Bitmap
             startActivity(intent);
         });
 
+
+    }
+
+    private File saveHighQualityImageToFile(Bitmap highQualityBitmap) {
+        // Create a file to save the high-quality image
+        File directory = getCacheDir(); // Use cache directory or getExternalCacheDir() for external storage
+        File imageFile = new File(directory, "high_quality_image.jpg");
+
+        // Compress the high-quality bitmap and save it to the file
+        try {
+            FileOutputStream outputStream = new FileOutputStream(imageFile);
+            highQualityBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+            outputStream.flush();
+            outputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return imageFile;
     }
 
     public void classifyImage(Bitmap image){
@@ -148,7 +173,7 @@ public class PredictStupa extends AppCompatActivity {
                 }
             }
 
-            String[] classes = {"abayagiriya", "jethawanaramaya", "kelaniya", "lankaramaya", "mirisawatiya", "ridi viharaya", "ruwanwalisaya","sadahirusaya", "somawathiya", "thuparamaya"};
+            String[] classes = {"abayagiriya", "jethawanaramaya", "kelaniya", "lankaramaya", "mirisawatiya","rankothwehera", "ridi viharaya", "ruwanwalisaya","sadahirusaya", "somawathiya", "thuparamaya"};
             result.setText(classes[maxPos]);
             // Releases model resources if no longer used.
             model.close();

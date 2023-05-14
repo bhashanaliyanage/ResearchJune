@@ -17,7 +17,7 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="11dp"
         android:background="@drawable/custom_button_white_background_shape"
         android:text="Take Picture"
         android:textAllCaps="false"
@@ -33,7 +33,7 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="90dp"
+        android:layout_marginBottom="73dp"
         android:background="@drawable/custom_button_white_background_shape"
         android:text="Launch Gallery"
         android:textAllCaps="false"
@@ -49,7 +49,7 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="26dp"
+        android:layout_marginBottom="13dp"
         android:background="@drawable/custom_button_white_background_shape"
         android:text="View 3D Models"
         android:textAllCaps="false"
@@ -58,18 +58,17 @@
         android:textStyle="bold" />
 
     <ImageView
-        android:layout_width="370sp"
-        android:layout_height="370sp"
-        android:layout_centerHorizontal="true"
         android:id="@+id/imageView"
+        android:layout_width="350dp"
+        android:layout_height="244dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10sp"
-        android:src="@drawable/img"
-        />
+        android:src="@drawable/img" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Classified as:"
+        android:text="Classified ruin as:"
         android:textStyle="bold"
         android:textSize="20sp"
         android:id="@+id/classified"
@@ -87,5 +86,46 @@
         android:id="@+id/result"
         android:layout_below="@+id/classified"
         />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="243dp"
+        android:layout_above="@+id/button"
+        android:layout_below="@+id/result"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="-2dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="36dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="1dp">
+
+            <TextView
+                android:id="@+id/detailText"
+                android:layout_width="289dp"
+                android:layout_height="95dp"
+                android:layout_above="@+id/button"
+                android:layout_below="@+id/result"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginEnd="64dp"
+                android:layout_marginBottom="94dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="#050505"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

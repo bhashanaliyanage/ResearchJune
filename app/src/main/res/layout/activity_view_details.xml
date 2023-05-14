@@ -65,12 +65,12 @@
     </ScrollView>
 
     <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="303dp"
-            android:layout_height="303dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10sp"
-            android:src="@drawable/img" />
+        android:id="@+id/imageView"
+        android:layout_width="357dp"
+        android:layout_height="326dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10sp"
+        android:src="@drawable/img" />
 
         <TextView
             android:id="@+id/result"

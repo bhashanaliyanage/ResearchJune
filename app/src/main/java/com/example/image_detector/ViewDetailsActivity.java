@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -34,8 +35,10 @@ public class ViewDetailsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String text = intent.getStringExtra("key");
-        Bitmap bitmap = intent.getParcelableExtra("image");
+        String imageFilePath = getIntent().getStringExtra("image");
 
+        // Load the image from the file or URI
+        Bitmap bitmap = BitmapFactory.decodeFile(imageFilePath);
         image.setImageBitmap(bitmap);
 
         result.setText(text);
@@ -480,7 +483,39 @@ public class ViewDetailsActivity extends AppCompatActivity {
                 }
             });
 
+        } else if (res.equals("rankothwehera")) {
+            head.setText("Rankoth Vehera");
+            details.setText("The Rankoth Vehera is a Buddhist stupa located in the ancient city of Polonnaruwa in Sri Lanka. It is the largest stupa in the Polonnaruwa Archaeological Park and the fourth largest on the island. The stupa was built by King Nissanka Malla (1187-1196) and is made of bricks. It is 55 meters in height and has a base circumference of 168 meters. The stupa is surrounded by a brick wall and has four entrances, one on each side. The Rankoth Vehera is a significant Buddhist pilgrimage site and is one of the most popular tourist attractions in Polonnaruwa.\n" +
+                    "\n" +
+                    "The Rankoth Vehera is a large and impressive structure. It is said to have been built on the site of an earlier stupa that was destroyed by an earthquake. The stupa is made of bricks and is covered in white plaster. It has a conical shape and is topped by a golden pinnacle. The Rankoth Vehera is surrounded by a large moat and is enclosed by a brick wall. The wall has four gates, one on each side.\n" +
+                    "\n" +
+                    "The Rankoth Vehera is a sacred site for Buddhists. It is believed to contain the relics of the Buddha. The stupa is a popular pilgrimage destination and is visited by Buddhists from all over the world. The Rankoth Vehera is also a popular tourist attraction. It is one of the most impressive and well-preserved structures in Polonnaruwa.\n" +
+                    "\n" +
+                    "The Rankoth Vehera is a significant part of Sri Lankan history and culture. It is a reminder of the country's rich Buddhist heritage. The stupa is a beautiful and impressive structure that is well worth a visit.");
 
+            maps.setOnClickListener(v -> {
+                // Replace latitude and longitude with the desired location coordinates
+                double latitude = 7.958302345154892;
+                double longitude = 81.00336805464401;
+
+                // Create a Uri with the desired location using the latitude and longitude
+                String uri = "geo:" + latitude + "," + longitude + "?q=" + latitude + "," + longitude;
+
+                // Create an intent with the ACTION_VIEW action and the Uri
+                Intent intent1 = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                intent1.setPackage("com.google.android.apps.maps"); // Optional: Specify the package to use Google Maps specifically
+
+                // Verify if there is an activity available to handle the intent
+                if (intent1.resolveActivity(getPackageManager()) != null) {
+                    // Start the activity with the intent
+                    startActivity(intent1);
+                } else {
+                    // Handle the case where Google Maps is not installed
+                    Toast.makeText(getApplicationContext(), "Google Maps is not installed", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }else {
+            Toast.makeText(this,"There are no details", Toast.LENGTH_SHORT).show();
         }
 
     }

@@ -43,13 +43,11 @@ import okhttp3.Response;
 
 public class ChatBot extends AppCompatActivity {
 
-    ImageButton send;
-
     RecyclerView recyclerView;
     EditText messageEditText;
+    ImageButton sendButton;
     List<Message> messageList;
     MessageAdapter messageAdapter;
-
     public static final MediaType JSON
             = MediaType.get("application/json; charset=utf-8");
     OkHttpClient client = new OkHttpClient();
@@ -60,6 +58,10 @@ public class ChatBot extends AppCompatActivity {
         setContentView(R.layout.activity_chat_bot);
         messageList = new ArrayList<>();
 
+        recyclerView = findViewById(R.id.recycler_view);
+        messageEditText = findViewById(R.id.message_edit_text);
+        sendButton = findViewById(R.id.send_btn);
+
         //setup recycler view
         messageAdapter = new MessageAdapter(messageList);
         recyclerView.setAdapter(messageAdapter);
@@ -67,47 +69,17 @@ public class ChatBot extends AppCompatActivity {
         llm.setStackFromEnd(true);
         recyclerView.setLayoutManager(llm);
 
-        send.setOnClickListener((v)->{
+        sendButton.setOnClickListener((v)->{
             String question = messageEditText.getText().toString().trim();
             addToChat(question,Message.SENT_BY_ME);
             messageEditText.setText("");
             callAPI(question);
         });
-
-//        btnSpeak.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-//                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-//                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");
-//                try {
-//                    startActivityForResult(intent, RESULT_SPEECH);
-//                    messageEditText.setText("");
-//                } catch (ActivityNotFoundException e) {
-//                    Toast.makeText(getApplicationContext(), "Your device doesn't support Speech to Text", Toast.LENGTH_SHORT).show();
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-
     }
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        EditText message = findViewById(R.id.message_edit_text);
-//        switch (requestCode){
-//            case RESULT_SPEECH:
-//                if(resultCode == RESULT_OK && data != null){
-//                    ArrayList<String> text = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-//                    message.setText(text.get(0));
-//                }
-//                break;
-//        }
-//    }
 
     void addToChat(String message,String sentBy){
         runOnUiThread(new Runnable() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void run() {
                 messageList.add(new Message(message,sentBy));
@@ -138,7 +110,7 @@ public class ChatBot extends AppCompatActivity {
         RequestBody body = RequestBody.create(jsonBody.toString(),JSON);
         Request request = new Request.Builder()
                 .url("https://api.openai.com/v1/completions")
-                .header("Authorization","Bearer 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")
+                .header("Authorization","Bearer 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")
                 .post(body)
                 .build();
 
@@ -164,6 +136,7 @@ public class ChatBot extends AppCompatActivity {
 
 
                 }else{
+                    assert response.body() != null;
                     addResponse("Failed to load response due to "+response.body().toString());
                 }
             }

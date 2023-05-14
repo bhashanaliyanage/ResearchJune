@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.image_detector.ml.Model;
 import com.example.image_detector.ml.StatuePredictionModel;
@@ -32,7 +33,7 @@ public class PredictRuins extends AppCompatActivity {
 
     Button camera, gallery, view3D;
     ImageView imageView;
-    TextView result;
+    TextView result, detail;
     int imageSize = 32;
 
     @Override
@@ -45,6 +46,7 @@ public class PredictRuins extends AppCompatActivity {
         view3D = findViewById(R.id.button3);
 
         result = findViewById(R.id.result);
+        detail = findViewById(R.id.detailText);
         imageView = findViewById(R.id.imageView);
 
         camera.setOnClickListener(new View.OnClickListener() {
@@ -74,15 +76,18 @@ public class PredictRuins extends AppCompatActivity {
                 sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/ashmhmd25321/3D_Models/blob/main/model_build.glb?raw=true"));
                 sceneViewerIntent.setPackage("com.google.android.googlequicksearchbox");
                 startActivity(sceneViewerIntent);
-            } else if(sName == "Rathnapasada") {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://p3d.in/R3fBn/embed")); // replace the URL with the link to your Sketchfab model
-                intent.setPackage("com.android.chrome"); // set the package of the web browser you want to use
-                startActivity(intent);
-            }else if (sName == "Satmahal Prasadaya") {
+            } else if(sName == "sigiriya") {
+                Intent sceneViewerIntent = new Intent(Intent.ACTION_VIEW);
+                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/ashmhmd25321/3D_Models/blob/main/sigiriya.glb?raw=true"));
+                sceneViewerIntent.setPackage("com.google.android.googlequicksearchbox");
+                startActivity(sceneViewerIntent);
+            }else if (sName == "sathmahal palace") {
                 Intent sceneViewerIntent = new Intent(Intent.ACTION_VIEW);
                 sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/bhashanaliyanage/ResearchJune/blob/main/Stamahal%2BPrasadaya.glb?raw=true"));
                 sceneViewerIntent.setPackage("com.google.android.googlequicksearchbox");
                 startActivity(sceneViewerIntent);
+            }else {
+                Toast.makeText(this,"There are no 3D model for the selected.", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -128,10 +133,37 @@ public class PredictRuins extends AppCompatActivity {
                 }
             }
 
-            String[] classes = {"Thiriyaya Girihandu Seya", "abayagiriya", "janthagara", "jethawanaya", "kuttam pokuna", "lowamahapaya", "palace complex of king nissanka", "ritigala", "sigiriya"};
+            String[] classes = {"abayagiriya", "janthagara", "jethawanaya", "kuttam pokuna", "lowamahapaya", "palace complex of king nissanka", "ritigala", "sathmahal palace", "sigiriya", "thiriyaya Girihandu Seya"};
             result.setText(classes[maxPos]);
+            String res = result.getText().toString();
+            detail.setVisibility(View.VISIBLE);
+
+            if (res.equals("abayagiriya")) {
+                detail.setText("Abayagiriya is an ancient Buddhist monastery and archaeological site located in Anuradhapura, Sri Lanka.");
+            } else if (res.equals("janthagara")) {
+                detail.setText("Janthagarain is a historic Buddhist temple located in Sri Lanka known for its architectural beauty and religious significance.");
+            }else if (res.equals("jethawanaya")) {
+                detail.setText("Jethawanaya is an ancient Buddhist stupa located in Sri Lanka, known for its historical and architectural significance.");
+            } else if (res.equals("kuttam pokuna")) {
+                detail.setText("Kuttam Pokuna, also known as the Twin Ponds, is a historic bathing complex in Sri Lanka known for its impressive twin pools that date back to ancient times.");
+            } else if (res.equals("lowamahapaya")) {
+                detail.setText("The Lohamahapaya, also known as the Brazen Palace, is an ancient building located in Sri Lanka that once served as a monastery and assembly hall for Buddhist monks.");
+            } else if (res.equals("palace complex of king nissanka")) {
+                detail.setText("The palace complex of King Nissanka was a grand and opulent royal residence in ancient Sri Lanka.");
+            } else if (res.equals("ritigala")) {
+                detail.setText("Ritigala is an ancient Buddhist monastery located in Sri Lanka, known for its architectural ruins and natural beauty.");
+            } else if (res.equals("sathmahal palace")) {
+                detail.setText("Sathmahal Palace is a historic palace in Sri Lanka known for its architectural beauty and cultural significance.");
+            } else if (res.equals("sigiriya")) {
+                detail.setText("Sigiriya is an ancient rock fortress located in Sri Lanka known for its historical and archaeological significance.");
+            } else if (res.equals("thiriyaya Girihandu Seya")) {
+                detail.setText("Thiriyaya Girihandu Seya is an ancient Buddhist stupa located in Thiriyaya, Sri Lanka, believed to be built by King Mahasena in the 3rd century BC.");
+            } else {
+                detail.setText("");
+            }
             // Releases model resources if no longer used.
             model.close();
+
         } catch (IOException e) {
             // TODO Handle the exception
         }
