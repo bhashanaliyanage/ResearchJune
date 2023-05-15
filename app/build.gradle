@@ -19,7 +19,7 @@ android {
         }
 
         python {
-            buildPython "D:/Applications/Conda/python.exe"
+            buildPython "F:/ProgramData/anaconda3/python.exe"
         }
 
         sourceSets {
