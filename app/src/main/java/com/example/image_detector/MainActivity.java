@@ -14,9 +14,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.image_detector.ml.StatuePredictionModel;
 
 import org.tensorflow.lite.DataType;
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         setContentView(R.layout.activity_main);
 
         camera = findViewById(R.id.button);
@@ -74,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void classifyImage(Bitmap image){
+    public void classifyImage(Bitmap image) {
         try {
             StatuePredictionModel model = StatuePredictionModel.newInstance(getApplicationContext());
 
@@ -89,8 +93,8 @@ public class MainActivity extends AppCompatActivity {
             int pixel = 0;
 
             //iterate over each pixel and extract R, G, and B values. Add those values individually to the byte buffer.
-            for(int i = 0; i < imageSize; i ++){
-                for(int j = 0; j < imageSize; j++){
+            for (int i = 0; i < imageSize; i++) {
+                for (int j = 0; j < imageSize; j++) {
                     int val = intValues[pixel++]; // RGB
                     byteBuffer.putFloat(((val >> 16) & 0xFF) * (1.f / 1));
                     byteBuffer.putFloat(((val >> 8) & 0xFF) * (1.f / 1));
@@ -115,8 +119,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             String[] classes = {"Avukana Buddha Statue", "Bahiravokanda Vihara Buddha Statue", "Bandaranaike", "Bhatikabhaya Abhaya King",
-            "Dambegoda Bodhisattva Statue", "King Devanampiya Tissa", "King Nissanka Malla", "King Ravana", "Kushta Raja Gala",
-            "N .M. Perera Statue", "Pieter Keuneman Memorial Statue", "Sangiliyan Statue", "Statue of Parakramabahu I", "World's tallest granite Samadhi Buddha statue in Kurunegala"};
+                    "Dambegoda Bodhisattva Statue", "King Devanampiya Tissa", "King Nissanka Malla", "King Ravana", "Kushta Raja Gala",
+                    "N .M. Perera Statue", "Pieter Keuneman Memorial Statue", "Sangiliyan Statue", "Statue of Parakramabahu I", "World's tallest granite Samadhi Buddha statue in Kurunegala"};
             result.setText(classes[maxPos]);
             // Releases model resources if no longer used.
             model.close();
@@ -127,8 +131,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(resultCode == RESULT_OK){
-            if(requestCode == 3){
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 3) {
                 Bitmap image = (Bitmap) data.getExtras().get("data");
                 int dimension = Math.min(image.getWidth(), image.getHeight());
                 image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
@@ -136,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
                 image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
                 classifyImage(image);
-            }else{
+            } else {
                 Uri dat = data.getData();
                 Bitmap image = null;
                 try {
