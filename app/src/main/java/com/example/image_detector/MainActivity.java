@@ -19,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.image_detector.ml.StatuePredictionModel;
 
@@ -69,11 +70,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        view3D.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, StatueModelsActivity.class);
-                startActivity(intent);
+        view3D.setOnClickListener(view -> {
+            String sName = result.getText().toString();
+            if (sName.equals("NuwaraEliya Buddha Statue")) {
+                Intent sceneViewerIntent = new Intent(Intent.ACTION_VIEW);
+                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/bhashanaliyanage/ResearchJune/blob/main/nuwaraeliyaBuddhastatue.glb?raw=true"));
+                sceneViewerIntent.setPackage("com.google.android.googlequicksearchbox");
+                startActivity(sceneViewerIntent);
+            } else if(sName.equals("Statue of Shiva")) {
+                Intent sceneViewerIntent = new Intent(Intent.ACTION_VIEW);
+                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/bhashanaliyanage/ResearchJune/blob/main/shiva.glb?raw=true"));
+                sceneViewerIntent.setPackage("com.google.android.googlequicksearchbox");
+                startActivity(sceneViewerIntent);
+            } else if (sName.equals("Athugala Buddha Statue")) {
+                Intent sceneViewerIntent = new Intent(Intent.ACTION_VIEW);
+                sceneViewerIntent.setData(Uri.parse("https://arvr.google.com/scene-viewer/1.0?file=https://github.com/bhashanaliyanage/ResearchJune/blob/main/Lord%20Buddha.glb?raw=true"));
+                sceneViewerIntent.setPackage("com.google.android.googlequicksearchbox");
+                startActivity(sceneViewerIntent);
+            } else {
+                Toast.makeText(this,"There is no model for this",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -118,9 +133,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            String[] classes = {"Avukana Buddha Statue", "Bahiravokanda Vihara Buddha Statue", "Bandaranaike", "Bhatikabhaya Abhaya King",
+            String[] classes = {"Athugala Buddha Statue", "Avukana Buddha Statue", "Bahiravokanda Vihara Buddha Statue", "Bandaranaike", "Bhatikabhaya Abhaya King",
                     "Dambegoda Bodhisattva Statue", "King Devanampiya Tissa", "King Nissanka Malla", "King Ravana", "Kushta Raja Gala",
-                    "N .M. Perera Statue", "Pieter Keuneman Memorial Statue", "Sangiliyan Statue", "Statue of Parakramabahu I", "World's tallest granite Samadhi Buddha statue in Kurunegala"};
+                    "N .M. Perera Statue", "NuwaraEliya Buddha Statue", "Pieter Keuneman Memorial Statue", "Sangiliyan Statue", "Statue of Parakramabahu I", "Statue of Shiva", "World's tallest granite Samadhi Buddha statue in Kurunegala"};
             result.setText(classes[maxPos]);
             // Releases model resources if no longer used.
             model.close();
