@@ -1,6 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">PATHFINDER</string>
-    <string name="select">Select Item</string>
     <string name="bn_home">Home</string>
     <string name="bn_dashboard">Dashboard</string>
     <string name="bn_settings">Settings</string>
