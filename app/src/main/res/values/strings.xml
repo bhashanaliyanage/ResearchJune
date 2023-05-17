@@ -5,4 +5,6 @@
     <string name="bn_dashboard">Dashboard</string>
     <string name="bn_settings">Settings</string>
     <string name="cd_background">background</string>
+    <string name="cd_menu">menu</string>
+    <string name="cd_generating_preview">Generating Preview</string>
 </resources>

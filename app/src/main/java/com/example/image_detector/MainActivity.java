@@ -51,15 +51,10 @@ public class MainActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageView);
 
         camera.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View view) {
-                if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                    Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(cameraIntent, 3);
-                } else {
-                    requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
-                }
+                Intent cameraIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(cameraIntent, 4);
             }
         });
         gallery.setOnClickListener(new View.OnClickListener() {
@@ -155,7 +150,11 @@ public class MainActivity extends AppCompatActivity {
 
                 image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
                 classifyImage(image);
-            } else {
+            } else if (requestCode == 4) {
+                Intent newModelIntent = new Intent(MainActivity.this, NewModel.class);
+                startActivity(newModelIntent);
+            }
+            else {
                 Uri dat = data.getData();
                 Bitmap image = null;
                 try {
