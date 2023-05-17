@@ -11,13 +11,58 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/chatbot_back"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/cd_background" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/colorLightBG"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="25dp"
+            android:src="@drawable/ic_dashboard"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0"
+            android:text="PATHFINDER"
+            android:textAllCaps="true"
+            android:textColor="@color/black2"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageView3"
+            app:layout_constraintStart_toEndOf="@+id/imageView4"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottom_layout" />
+        android:layout_above="@id/bottom_layout"
+        android:layout_below="@id/constraintLayout" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottom_layout"
@@ -36,7 +81,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:inputType="text" />
 
         <ImageButton
             android:id="@+id/send_btn"
@@ -44,6 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:backgroundTint="#00E8EAF6"
+            android:contentDescription="send"
             android:src="@drawable/ic_baseline_send_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/message_edit_text"
